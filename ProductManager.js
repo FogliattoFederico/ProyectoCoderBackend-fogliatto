@@ -4,7 +4,7 @@ export default class ProductManager {
   #products;
   #path;
   constructor() {
-    this.#products = [];
+    // this.#products = [];
     this.#path = "./Productos.json";
   }
 
@@ -41,10 +41,10 @@ export default class ProductManager {
     status = true
   ) => {
     try {
-      this.#products = await this.readFile();
+      const products = await this.readFile();
 
       const newProduct = {
-        id: this.#products.length + 1,
+        id: products.length + 1,
         title,
         description,
         price,
@@ -54,6 +54,7 @@ export default class ProductManager {
         category,
         status,
       };
+
       if (
         !title ||
         !description ||
@@ -66,21 +67,21 @@ export default class ProductManager {
         throw new Error("Por favor complete todos los campos");
       }
 
-      const validawteProduct = this.#products.find(
-        (product) => product.code === code
-      );
+      const validateProduct = products.find((product) => product.code === code);
 
-      if (validawteProduct) {
+      if (validateProduct) {
         throw new Error("El producto ya se encuentra agregado");
       }
 
-      this.#products.push(newProduct);
+      const productsUpdate = [...products, newProduct];
+
       await fs.promises.writeFile(
         `${this.#path}`,
-        JSON.stringify(this.#products, null, "\t"),
+        JSON.stringify(productsUpdate, null, "\t"),
         "utf-8"
       );
       console.log("Producto agregado exitosamente!!");
+
     } catch (error) {
       throw new Error(error);
     }
