@@ -11,14 +11,27 @@ export default class ProductManager {
   readFile = async () => {
     try {
       if (this.#path) {
-        const products = await fs.promises.readFile(`${this.#path}`, "utf-8");
-
+        let products;
+        try {
+          // Intenta leer el archivo
+          products = await fs.promises.readFile(`${this.#path}`, "utf-8");
+        } catch (error) {
+          // Si ocurre un error al leer el archivo (por ejemplo, no existe), crea un archivo vacío
+          if (error.code === 'ENOENT') {
+            await fs.promises.writeFile(this.#path, '[]');
+            // Lee el archivo recién creado
+            products = '[]';
+          } else {
+            throw error; // Lanza cualquier otro error
+          }
+        }
         return JSON.parse(products);
       }
     } catch {
       throw new Error("Ha surgido un problema al leer los productos");
     }
   };
+  
   /**
    *
    * @param {string} title
