@@ -1,6 +1,6 @@
 import { Router } from "express";
-import CartManager from "../../CartManager.js";
-import ProductManager from "../../ProductManager.js";
+import CartManager from "../manager/CartManager.js";
+import ProductManager from "../manager/ProductManager.js";
 import fs from "fs";
 
 const router = Router();
@@ -89,7 +89,7 @@ router.post("/:cid/product/:pid", async (req, res) => {
     if (existingProductIndex !== -1) {
       cart.products[existingProductIndex].quantity++;
     } else {
-      cart.products.push({ id: product.id, quantity: 1 });
+      cart.products.push({ id: product.id, Title: product.title, quantity: 1 });
     }
 
     carts[cartIndex] = cart;

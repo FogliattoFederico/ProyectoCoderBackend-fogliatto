@@ -1,0 +1,122 @@
+[
+	{
+		"id": 1,
+		"title": "titulo1",
+		"description": "description1",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 101,
+		"stock": 20,
+		"category": "console"
+	},
+	{
+		"id": 2,
+		"title": "titulo2",
+		"description": "description2",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 102,
+		"stock": 20,
+		"category": "console",
+		"status": true
+	},
+	{
+		"id": 3,
+		"title": "titulo3",
+		"description": "description3",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 103,
+		"stock": 20,
+		"category": "console",
+		"status": true
+	},
+	{
+		"id": 4,
+		"title": "titulo4",
+		"description": "description4",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 104,
+		"stock": 20,
+		"category": "console",
+		"status": true
+	},
+	{
+		"id": 5,
+		"title": "titulo5",
+		"description": "description5",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 105,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	},
+	{
+		"id": 6,
+		"title": "titulo6",
+		"description": "description6",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 106,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	},
+	{
+		"id": 7,
+		"title": "titulo7",
+		"description": "description7",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 107,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	},
+	{
+		"id": 8,
+		"title": "titulo8",
+		"description": "description8",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 108,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	},
+	{
+		"id": 9,
+		"title": "titulo9",
+		"description": "description9",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 109,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	},
+	{
+		"id": 10,
+		"title": "titulo10",
+		"description": "description10",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 110,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	},
+	{
+		"id": 11,
+		"title": "titulo11",
+		"description": "description11",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": 111,
+		"stock": 20,
+		"category": "pc",
+		"status": true
+	}
+]

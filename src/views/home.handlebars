@@ -1,0 +1,16 @@
+<main>
+  <h1>Homepage</h1>
+  <div class="container">
+  {{#each products}}
+    <div class="product">
+      <p>Product: {{this.title}}</p>
+      <p>Description: {{this.title}}</p>
+      <p> $ {{this.price}}</p>
+      <p>Image: {{this.thumbnail}}</p>
+      <p>Code: {{this.code}}</p>
+      <p>Stock: {{this.stock}}</p>
+      <p>Category: {{this.category}}</p>
+    </div>
+  {{/each}}
+  </div>
+</main>
