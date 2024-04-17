@@ -8,9 +8,9 @@ import viewsRouter from "./routes/views.router.js";
 import { Server } from "socket.io";
 
 const app = express();
-
+const PORT = process.env.PORT || 8080
 //Configuracion Socket.io
-const httpServer = app.listen(8080, (error) => {
+const httpServer = app.listen(PORT, (error) => {
   if (error) {
     console.log(error);
   }
