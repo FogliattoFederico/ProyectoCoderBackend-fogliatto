@@ -19,13 +19,27 @@ router.get("/", async (req, res) => {
 
 router.get("/chat", (req, res) => {
   res.render("chat", {});
-});
+  const { io } = req;
 
-router.get("/index", (req, res) => {
-  res.render("index", {});
+  const messages = [];
+
+  io.on("connection", (socket) => {
+    console.log("cliente conectado al chat");
+
+    socket.on("message", (data) => {
+      console.log("message data", data);
+
+      messages.push(data);
+
+      io.emit("messageLog", messages);
+    });
+  });
 });
 
 router.get("/realtimeproducts", (req, res) => {
   res.render("realTimeProducts", {});
+
+
 });
+
 export default router;
