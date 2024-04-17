@@ -9,6 +9,7 @@ import { Server } from "socket.io";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
 //Configuracion Socket.io
 const httpServer = app.listen(PORT, (error) => {
   if (error) {
@@ -18,6 +19,7 @@ const httpServer = app.listen(PORT, (error) => {
 });
 
 const io = new Server(httpServer);
+
 function chatSocket(io) {
   return (req, res, next) => {
     req.io = io;
@@ -26,6 +28,7 @@ function chatSocket(io) {
 }
 
 app.use(chatSocket(io))
+
 //Manejo de Json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -56,15 +59,3 @@ app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
 
-// const messages = [];
-// io.on("connection", (socket) => {
-//   console.log("cliente conectado al chat");
-
-//   socket.on("message", (data) => {
-//     console.log("message data", data);
-
-//     messages.push(data);
-
-//     io.emit("messageLog", messages);
-//   });
-// });

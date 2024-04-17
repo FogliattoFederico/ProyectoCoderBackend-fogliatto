@@ -1,37 +1,114 @@
 <h1>Crear producto</h1>
-<div>
-  <div>
-    <label for="title">Nombre del producto</label>
+<div class="container">
+
+<div class="form">
+  <div class="input">
+    <label for="title">Name</label>
     <input type="text" name="title" id="title" />
   </div>
-  <div>
+  <div class="input">
     <label for="description">Descripcion</label>
     <input type="text" name="description" id="description" />
   </div>
-  <div>
-    <label for=""></label>
-    <input type="text" name="" />
+  <div class="input">
+    <label for="price">Price</label>
+    <input type="text" name="price" id="price" />
   </div>
-  <div>
-    <label for=""></label>
-    <input type="text" name="" />
+  <div class="input">
+    <label for="thumbnail">Image</label>
+    <input type="text" name="thumbnail" id="thumbnail" />
   </div>
-  <div>
-    <label for=""></label>
-    <input type="text" name="" />
+  <div class="input">
+    <label for="code">Code</label>
+    <input type="text" name="code" id="code" />
   </div>
-  <div>
-    <label for=""></label>
-    <input type="text" name="" />
+  <div class="input">
+    <label for="stock">Stock</label>
+    <input type="text" name="stock" />
   </div>
-  <div>
-    <label for=""></label>
-    <input type="text" name="" />
+  <div class="input">
+    <label for="category">Category</label>
+    <input type="text" name="category" />
   </div>
-  <div>
-    <button></button>
+  <div class="input">
+    <button class="button" type="submit" id="button">Send</button>
   </div>
+</div>
+<div id="products" class="productList">
+
+</div>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/realTimeProducts.js"></script>
+<style>
+h1{
+  text-align: center;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+}
+.input{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: 0 auto
+}
+.button{
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+.productList{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 10px;
+  margin-top: 30px;
+}
+</style>
+<script>
+    const socket = io()
+  const productList = document.getElementById('products')
+    socket.on('listProducts', data => {
+      console.log(data)
+
+      let products = ''
+
+        data.forEach( product => {
+            products += `<div style="display: flex, flex-direction: column">${product.title} -${product.description} - $ ${product.price} - ${product.code} - ${product.stock} - ${product.category}</div>`
+        })
+
+        productList.innerHTML = products
+      })
+
+  const title = document.getElementById('title')
+  const description = document.getElementById('description')
+  const price = document.getElementById('price')
+  const thumbnail = document.getElementById('thumbnail')
+  const code = document.getElementById('code')
+  const stock = document.getElementById('stock')
+  const category = document.getElementById('category')
+
+  const button = document.getElementById('button')
+
+  button.addEventListener('click', () =>{
+      socket.emit('newProduct', {
+        title: title.value,
+        description: description.value,
+        price: price.value,
+        thumbnail: thumbnail.value,
+        code: code.value,
+        stock: stock.value,
+        category: category.value
+
+      })
+      title.value  = ''
+      description.value  = ''
+      price.value  = ''
+      thumbnail.value  = ''
+      code.value  = ''
+      stock.value  = ''
+      category.value = ''
+  })
+</script>
